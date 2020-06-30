@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <PropertyGroup>
+        <ProjectType>Local</ProjectType>
+        <ProductVersion>11.0.50522.1 RCREL</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{AFC4A68F-CF3A-4FC7-938D-A03A0DCE8452}</ProjectGuid>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ApplicationIcon>App.ico</ApplicationIcon>
+        <AssemblyKeyContainerName>
+        </AssemblyKeyContainerName>
+        <AssemblyName>Snippets</AssemblyName>
+        <AssemblyOriginatorKeyFile>
+        </AssemblyOriginatorKeyFile>
+        <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+        <DefaultClientScript>JScript</DefaultClientScript>
+        <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+        <DefaultTargetSchema>IE50</DefaultTargetSchema>
+        <DelaySign>false</DelaySign>
+        <OutputType>WinExe</OutputType>
+        <OptionCompare>Binary</OptionCompare>
+        <OptionExplicit>On</OptionExplicit>
+        <OptionStrict>Off</OptionStrict>
+        <RootNamespace>NationalInstruments.Examples.Snippets</RootNamespace>
+        <StartupObject>NationalInstruments.Examples.Snippets.My.MyApplication</StartupObject>
+        <FileUpgradeFlags>
+        </FileUpgradeFlags>
+        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <OutputPath>bin\Debug</OutputPath>
+        <BaseAddress>285212672</BaseAddress>
+        <ConfigurationOverrideFile>
+        </ConfigurationOverrideFile>
+        <DefineConstants>NETFX2_0,NETFX3_5,NETFX4_0,NETFX4_5</DefineConstants>
+        <DefineDebug>true</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+        <DebugSymbols>true</DebugSymbols>
+        <Optimize>false</Optimize>
+        <RegisterForComInterop>false</RegisterForComInterop>
+        <RemoveIntegerChecks>false</RemoveIntegerChecks>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningLevel>1</WarningLevel>
+        <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>Snippets.xml</DocumentationFile>
+        <Prefer32Bit>false</Prefer32Bit>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <OutputPath>bin\Release</OutputPath>
+        <BaseAddress>285212672</BaseAddress>
+        <ConfigurationOverrideFile>
+        </ConfigurationOverrideFile>
+        <DefineConstants>NETFX2_0,NETFX3_5,NETFX4_0,NETFX4_5</DefineConstants>
+        <DefineDebug>false</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+        <DebugSymbols>false</DebugSymbols>
+        <Optimize>true</Optimize>
+        <RegisterForComInterop>false</RegisterForComInterop>
+        <RemoveIntegerChecks>false</RemoveIntegerChecks>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningLevel>1</WarningLevel>
+        <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>Snippets.xml</DocumentationFile>
+        <Prefer32Bit>false</Prefer32Bit>
+    </PropertyGroup>
+    <PropertyGroup>
+        <MyType>WindowsForms</MyType>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="NationalInstruments.Common, Version=19.0.40.49152, Culture=neutral, PublicKeyToken=dc6ad606294fc298" />
+        <Reference Include="NationalInstruments.UI, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="System" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Deployment" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+    </ItemGroup>
+    <ItemGroup>
+        <Import Include="Microsoft.VisualBasic" />
+        <Import Include="NationalInstruments" />
+        <Import Include="NationalInstruments.UI" />
+        <Import Include="System" />
+        <Import Include="System.Collections" />
+        <Import Include="System.Collections.Generic" />
+        <Import Include="System.Data" />
+        <Import Include="System.Drawing" />
+        <Import Include="System.Diagnostics" />
+        <Import Include="System.Windows.Forms" />
+        <Import Include="System.Linq" />
+        <Import Include="System.Xml.Linq" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="ComplexGraph.vb" />
+        <Compile Include="Control.vb" />
+        <Compile Include="ControlArray.vb" />
+        <Compile Include="ControlBase.vb" />
+        <Compile Include="DigitalGraph.vb" />
+        <Compile Include="MainForm.vb">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="MainForm.Designer.vb">
+            <DependentUpon>MainForm.vb</DependentUpon>
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Graph.vb" />
+        <Compile Include="IntensityGraph.vb" />
+        <Compile Include="Legend.vb" />
+        <Compile Include="LinearNumericPointer.vb" />
+        <Compile Include="AssemblyInfo.vb" />
+        <Compile Include="Application.Designer.vb">
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Application.myapp</DependentUpon>
+        </Compile>
+        <Compile Include="NumericPointer.vb" />
+        <Compile Include="RadialNumericPointer.vb" />
+        <Compile Include="ScatterGraph.vb" />
+        <Compile Include="WaveformGraph.vb" />
+        <Compile Include="XYGraph.vb" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="MainForm.resx">
+            <DependentUpon>MainForm.vb</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="licenses.licx" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="App.ico" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Application.myapp">
+            <Generator>MyApplicationCodeGenerator</Generator>
+            <LastGenOutput>Application.Designer.vb</LastGenOutput>
+        </None>
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
+    <PropertyGroup>
+        <PreBuildEvent>
+        </PreBuildEvent>
+        <PostBuildEvent>
+        </PostBuildEvent>
+    </PropertyGroup>
+</Project>

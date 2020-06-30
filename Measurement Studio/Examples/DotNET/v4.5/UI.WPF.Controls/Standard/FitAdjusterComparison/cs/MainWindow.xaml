@@ -1,0 +1,105 @@
+﻿<Window x:Class="NationalInstruments.Examples.FitAdjusterComparison.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        Title="Fit Adjuster Comparison Example"
+        Width="750"
+        Height="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"
+                           MinHeight="250" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.Resources>
+            <ni:AxisDouble x:Key="fitVisibleChartAxis"
+                           Label="Chart axis"
+                           Orientation="Horizontal"
+                           Adjuster="ContinuousChart"
+                           InteractionMode="None" />
+            <ni:AxisDouble x:Key="fitChartAxis"
+                           Label="Chart axis"
+                           Orientation="Horizontal"
+                           Adjuster="ContinuousChart"
+                           InteractionMode="None"
+                           Range="{Binding Path=Range, Mode=TwoWay, Source={StaticResource fitVisibleChartAxis}}" />
+        </Grid.Resources>
+
+        <ni:Graph x:Name="fitVisibleGraph"
+                  Grid.Column="0"
+                  DataSource="{Binding}">
+            <ni:Graph.Axes>
+                <StaticResource ResourceKey="fitVisibleChartAxis" />
+                <ni:AxisDouble Orientation="Vertical"
+                               Adjuster="FitVisibleLoosely"
+                               InteractionMode="None">
+                    <ni:AxisDouble.Label>
+                        <TextBlock><Bold>Fit Visible</Bold> axis</TextBlock>
+                    </ni:AxisDouble.Label>
+                </ni:AxisDouble>
+            </ni:Graph.Axes>
+        </ni:Graph>
+
+        <ni:Graph x:Name="fitGraph"
+                  Grid.Column="1"
+                  DataSource="{Binding}">
+            <ni:Graph.Axes>
+                <StaticResource ResourceKey="fitChartAxis" />
+                <ni:AxisDouble Orientation="Vertical"
+                               Adjuster="FitLoosely"
+                               InteractionMode="None">
+                    <ni:AxisDouble.Label>
+                        <TextBlock><Bold>Fit</Bold> axis</TextBlock>
+                    </ni:AxisDouble.Label>
+                </ni:AxisDouble>
+            </ni:Graph.Axes>
+        </ni:Graph>
+
+        <GroupBox Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  Header="Data Controls">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style x:Key="ButtonStyle"
+                           TargetType="Control">
+                        <Setter Property="VerticalAlignment"
+                                Value="Center" />
+                        <Setter Property="Margin"
+                                Value="25,3,0,3" />
+                        <Setter Property="Padding"
+                                Value="20,3" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <CheckBox Style="{StaticResource ButtonStyle}"
+                          Content="_Pause charting"
+                          Checked="OnPauseChecked"
+                          Unchecked="OnPauseUnchecked" />
+                <Button Style="{StaticResource ButtonStyle}"
+                        Content="_Clear"
+                        Click="OnClearClicked" />
+            </StackPanel>
+        </GroupBox>
+
+        <Expander Grid.Row="2"
+                  Grid.ColumnSpan="2"
+                  Header="About the &quot;Fit Adjust Comparison&quot; Example"
+                  IsExpanded="True">
+            <TextBlock xml:space="preserve"
+                       Padding="4"
+                       TextWrapping="Wrap">This example compares the <Bold>Fit</Bold> and <Bold>Fit Visible</Bold> axis adjuster modes for the Graph.
+
+A noisy signal is charted in both graphs.  The graph on the left uses the <Italic>FitVisibleLoosly</Italic> adjuster, which adjusts the range to fit the data made visible by the other axis.  The graph on the right uses the <Italic>FitLoosely</Italic> adjuster, which adjusts the range to fit the entire chart history.
+
+Use the <Italic>Pause</Italic> checkbox and <Italic>Clear</Italic> button to control the charting of data.  When the graphs are paused, you can pan over the plot history interactively.
+
+Refer to the <Bold>RangeAdjuster</Bold> help for more information on all of the available adjuster modes.</TextBlock>
+        </Expander>
+    </Grid>
+</Window>

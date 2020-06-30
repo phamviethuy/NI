@@ -1,0 +1,61 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsDataSource", "WindowsFormsDataSource\WindowsFormsDataSource.csproj", "{6EB2DE14-BD8E-4D6B-945F-73BF0EF56F08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BufferedWriter", "BufferedWriter\BufferedWriter.csproj", "{8EFE2426-D9B3-42E4-AFE5-E8BF6D8B2F3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "Subscriber\Subscriber.csproj", "{BC90302D-43AD-4D21-ACC7-F4435316E9E9}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormsDataSource", "WebFormsDataSource\", "{9F6EA932-A472-46FC-B170-07E97C9A9742}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "4.0"
+		Debug.AspNetCompiler.VirtualPath = "/WebFormsDataSource"
+		Debug.AspNetCompiler.PhysicalPath = "WebFormsDataSource\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebFormsDataSource\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/WebFormsDataSource"
+		Release.AspNetCompiler.PhysicalPath = "WebFormsDataSource\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WebFormsDataSource\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "3246"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnDemandReader", "OnDemandReader\OnDemandReader.csproj", "{4B373E7F-ACC2-4ABE-810B-3BDC5ADD9EB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EB2DE14-BD8E-4D6B-945F-73BF0EF56F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB2DE14-BD8E-4D6B-945F-73BF0EF56F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB2DE14-BD8E-4D6B-945F-73BF0EF56F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB2DE14-BD8E-4D6B-945F-73BF0EF56F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFE2426-D9B3-42E4-AFE5-E8BF6D8B2F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFE2426-D9B3-42E4-AFE5-E8BF6D8B2F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFE2426-D9B3-42E4-AFE5-E8BF6D8B2F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFE2426-D9B3-42E4-AFE5-E8BF6D8B2F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC90302D-43AD-4D21-ACC7-F4435316E9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC90302D-43AD-4D21-ACC7-F4435316E9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC90302D-43AD-4D21-ACC7-F4435316E9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC90302D-43AD-4D21-ACC7-F4435316E9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F6EA932-A472-46FC-B170-07E97C9A9742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F6EA932-A472-46FC-B170-07E97C9A9742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F6EA932-A472-46FC-B170-07E97C9A9742}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F6EA932-A472-46FC-B170-07E97C9A9742}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{4B373E7F-ACC2-4ABE-810B-3BDC5ADD9EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B373E7F-ACC2-4ABE-810B-3BDC5ADD9EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B373E7F-ACC2-4ABE-810B-3BDC5ADD9EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B373E7F-ACC2-4ABE-810B-3BDC5ADD9EB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

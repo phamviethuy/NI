@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProductVersion>11.0.50522.1 RCREL</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{607EDD45-DED2-445C-AFB7-774EDC4AD2E1}</ProjectGuid>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>NationalInstruments.Examples.PowerVsTimeZeroSpan</RootNamespace>
+        <AssemblyName>PowerVsTimeZeroSpan.2012</AssemblyName>
+        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <IsWebBootstrapper>false</IsWebBootstrapper>
+        <PublishUrl>publish\</PublishUrl>
+        <Install>true</Install>
+        <InstallFrom>Disk</InstallFrom>
+        <UpdateEnabled>false</UpdateEnabled>
+        <UpdateMode>Foreground</UpdateMode>
+        <UpdateInterval>7</UpdateInterval>
+        <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+        <UpdatePeriodically>false</UpdatePeriodically>
+        <UpdateRequired>false</UpdateRequired>
+        <MapFileExtensions>true</MapFileExtensions>
+        <ApplicationRevision>0</ApplicationRevision>
+        <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+        <UseApplicationTrust>false</UseApplicationTrust>
+        <BootstrapperEnabled>true</BootstrapperEnabled>
+        <StartupObject>NationalInstruments.Examples.PowerVsTimeZeroSpan.Program</StartupObject>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin.2012\Debug\</OutputPath>
+        <DefineConstants>TRACE,DEBUG,NETFX4_0,NETFX2_0,NETFX3_5,NETFX4_5</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin.2012\Release\</OutputPath>
+        <DefineConstants>TRACE,NETFX4_0,NETFX2_0,NETFX3_5,NETFX4_5</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ApplicationIcon>App.ico</ApplicationIcon>
+    </PropertyGroup>
+    <PropertyGroup />
+    <ItemGroup>
+        <Import Include="Microsoft.VisualBasic" />
+        <Import Include="System" />
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Ivi.Driver" />
+        <Reference Include="NationalInstruments.Common, Version=19.0.40.49152, Culture=neutral, PublicKeyToken=dc6ad606294fc298" />
+        <Reference Include="NationalInstruments.ModularInstruments.Common" />
+        <Reference Include="NationalInstruments.ModularInstruments.ModularInstrumentsSystem" />
+        <Reference Include="NationalInstruments.ModularInstruments.NIRfsa.Fx45" />
+        <Reference Include="NationalInstruments.UI, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="System" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AssemblyInfo.vb" />
+        <Compile Include="MainForm.Designer.vb">
+            <DependentUpon>MainForm.vb</DependentUpon>
+        </Compile>
+        <Compile Include="MainForm.vb">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Program.vb" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="licenses.licx" />
+        <EmbeddedResource Include="MainForm.resx">
+            <DependentUpon>MainForm.vb</DependentUpon>
+        </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="App.ico" />
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
+</Project>

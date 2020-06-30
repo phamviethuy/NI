@@ -1,0 +1,4 @@
+NationalInstruments.UI.WindowsForms.PropertyEditor, NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4
+NationalInstruments.UI.WindowsForms.LedArray, NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4
+NationalInstruments.UI.WindowsForms.NumericEditArray, NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4
+NationalInstruments.UI.WindowsForms.SwitchArray, NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4

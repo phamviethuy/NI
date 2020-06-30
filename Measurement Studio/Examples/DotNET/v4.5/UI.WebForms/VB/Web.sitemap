@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode url="~/Default.aspx" title="Examples">
+    <siteMapNode url="~/Annotations/Default.aspx" title="Annotations"/>
+    <siteMapNode url="~/AutoRefresh/Default.aspx" title="Auto Refresh"/>
+    <siteMapNode url="~/Axes/Default.aspx" title="Axes"/>
+    <siteMapNode url="~/Charting/Default.aspx" title="Charting"/>
+    <siteMapNode url="~/ComplexAnnotations/Default.aspx" title="Complex Annotations"/>
+    <siteMapNode url="~/ComplexCursors/Default.aspx" title="Complex Cursors"/>
+    <siteMapNode url="~/ComplexWaveformPlotting/Default.aspx" title="Complex Waveform Plotting"/>
+    <siteMapNode url="~/Cursors/Default.aspx" title="Cursors"/>
+    <siteMapNode url="~/CustomStyles/Default.aspx" title="Custom Styles"/>
+    <siteMapNode url="~/ErrorBands/Default.aspx" title="Error Bands"/>
+    <siteMapNode url="~/FillLineToBase/Default.aspx" title="Fill/Line-To-Base"/>
+    <siteMapNode url="~/GraphExtensibility/Default.aspx" title="Graph Extensibility"/>
+    <siteMapNode url="~/GraphInteraction/Default.aspx" title="Graph Interaction"/>
+    <siteMapNode url="~/SpecialValues/Default.aspx" title="Special Values"/>
+    <siteMapNode url="~/UpdatePanelTimer/Default.aspx" title="Update Panel and Timer"/>
+    <siteMapNode url="~/XYGraph/Default.aspx" title="XY Graph"/>    
+  </siteMapNode>
+</siteMap>

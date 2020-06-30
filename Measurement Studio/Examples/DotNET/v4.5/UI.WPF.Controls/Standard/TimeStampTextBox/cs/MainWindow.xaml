@@ -1,0 +1,119 @@
+<Window x:Class="NationalInstruments.Examples.TimeStampTextBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        xmlns:niPrimitives="http://schemas.ni.com/controls/2009/xaml/presentation/primitives"
+        Title="Mixed Graph Example"
+        Width="400"
+        Height="325">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <niPrimitives:MatchedValueConverter x:Key="ButtonLocationsToBoolean"
+                                                DefaultValue="Right"
+                                                DefaultResult="False">
+                <niPrimitives:MatchPair Value="Left"
+                                        Result="True" />
+            </niPrimitives:MatchedValueConverter>
+
+            <Style TargetType="GroupBox">
+                <Setter Property="Margin"
+                        Value="5" />
+                <Setter Property="Padding"
+                        Value="5" />
+            </Style>
+
+            <Style TargetType="CheckBox">
+                <Setter Property="Margin"
+                        Value="0,5" />
+            </Style>
+        </Grid.Resources>
+
+        <ni:TimeStampTextBoxDateTime x:Name="timestamp"
+                                     Height="50"
+                                     Margin="20"
+                                     FontSize="16"
+                                     VerticalContentAlignment="Center" />
+
+        <GroupBox Grid.Row="0"
+                  Grid.RowSpan="4"
+                  Grid.Column="1"
+                  Header="_Interaction Modes">
+            <ItemsControl CheckBox.Click="OnInteractionModeCheckBoxClicked">
+                <ItemsControl.Items>
+                    <ni:TimeStampTextBoxInteractionModes>ArrowKeys</ni:TimeStampTextBoxInteractionModes>
+                    <ni:TimeStampTextBoxInteractionModes>ScrollWheel</ni:TimeStampTextBoxInteractionModes>
+                    <ni:TimeStampTextBoxInteractionModes>ButtonClicks</ni:TimeStampTextBoxInteractionModes>
+                    <ni:TimeStampTextBoxInteractionModes>TextInput</ni:TimeStampTextBoxInteractionModes>
+                    <ni:TimeStampTextBoxInteractionModes>CalendarButton</ni:TimeStampTextBoxInteractionModes>
+                </ItemsControl.Items>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding}"
+                                  IsChecked="True" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1"
+                  Grid.Column="0"
+                  Header="_Buttons Location">
+            <ni:Switch TrueContent="Left"
+                       FalseContent="Right"
+                       Value="{Binding ElementName=timestamp, Path=ButtonsLocation, Mode=TwoWay, Converter={StaticResource ButtonLocationsToBoolean}}" />
+        </GroupBox>
+
+        <GroupBox Grid.Row="2"
+                  Grid.Column="0"
+                  Header="_Range">
+            <Grid RadioButton.Click="OnRangeRadioButtonClicked">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton Grid.Column="0"
+                             Content="Full"
+                             IsChecked="True" />
+                <RadioButton Grid.Column="1"
+                             Content="Day" />
+                <RadioButton Grid.Column="2"
+                             Content="Year" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3"
+                  Grid.Column="0"
+                  Header="_Format">
+            <Grid RadioButton.Click="OnFormatRadioButtonClicked">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton Grid.Column="0"
+                             Content="Default"
+                             IsChecked="True" />
+                <RadioButton Grid.Column="1"
+                             Content="Date"
+                             Tag="yyyy-MM-dd" />
+                <RadioButton Grid.Column="2"
+                             Content="Time"
+                             Tag="h:mm:ss tt" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

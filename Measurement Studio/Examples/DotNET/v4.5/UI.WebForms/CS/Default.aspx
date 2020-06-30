@@ -1,0 +1,250 @@
+<%@ Page Language="C#" MasterPageFile="~/Examples.master" CodeFile="Default.aspx.cs" Inherits="Default" Title="Measurement Studio ASP.NET Web Forms Controls" %>
+
+<asp:Content ContentPlaceHolderID="exampleContentHolder" Runat="server">
+    <table width="100%" cellspacing="0" cellpadding="7" border="0">
+        <tr valign="top">
+            <td colspan="2">
+                <span style="font-size: 10pt; font-family: Verdana; mso-fareast-font-family: 'Times New Roman';
+                    mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+                    <strong>Welcome to the Measurement Studio ASP.NET Demonstration Gallery.&nbsp; The Web
+                        links below take you to interactive Web pages where you can explore the rich functionality
+                        offered by Measurement Studio ASP.NET controls.&nbsp;</strong></span></td>
+        </tr>
+        <tr valign="top">
+            <td style="width: 125px">
+                <asp:HyperLink ID="HyperLink1" Runat="server" NavigateUrl="~/Annotations/Default.aspx">Annotations</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton11" runat="server" ImageUrl="~/annotations.png" PostBackUrl="~/Annotations/Default.aspx" /></td>
+            <td>
+            This example demonstrates point and range annotations, which are used to highlight regions of interest in the graph.
+            The example has two range annotations, red and blue, which are used to highlight the low and high regions. The two point
+            annotations are used to highlight the min and max points of the plot. Use the ArrowHead drop down to change the arrow
+            head style of the point annotations and CaptionAlignment to change where the caption is placed relative to the point. Use CaptionXOffset
+            and CaptionYOffset to move the caption. ShapeWidth and ShapeHeight change the size of the shape. Use ShapeVisible to change
+            the shape visibility.
+            </td>
+        </tr>
+
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkAutoRefresh" Runat="server" NavigateUrl="~/AutoRefresh/Default.aspx">Auto Refresh</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/AutoRefresh.png" PostBackUrl="~/AutoRefresh/Default.aspx" /></td>
+            <td>
+                This example demonstrates a remote monitoring application that updates
+                parts of the user interface on a timed interval.  Set the switch to On to
+                start charting new values.  The slide will display the most recent values.
+                The minimum, average, and maximum meters will display the minimum, average, and
+                maximum values respectively for all of the data that is currently plotted in
+                the graph.  Up-level browsers will be updated without posting the page back
+                to the server.
+            </td>
+        </tr>
+        
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkAxes" Runat="server" NavigateUrl="~/Axes/Default.aspx">Axes</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Axis.png" PostBackUrl="~/Axes/Default.aspx" /></td>
+            <td>
+                This example demonstrates axis scaling in the 2D graph.  The Plot Data
+                button plots a set of data to the graph.  The radio buttons in each group
+                box control the scaling on the specified axis.  Set the radio button to
+                AutoScale to automatically scale the respective axis based on the data
+                plotted to the axis.  Set the radio button to Manual to manually scale
+                the axis.  The numeric edit controls can be used to set the minimum and
+                maximum values of the axis being scaled.  The numeric edit controls only
+                have an effect when the Manual radio button is checked.
+            </td>
+        </tr>
+        
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkCharting" Runat="server" NavigateUrl="~/Charting/Default.aspx">Charting</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/Charting.png" PostBackUrl="~/Charting/Default.aspx" /></td>
+            <td>
+                This example demonstrates charting in the 2D graph.  The drop down lists
+                in the Charting Settings group box control the chart style of the axis.
+                Set the charting mode to Scope Chart to scroll the axis like a scope.
+                Set the charting mode to Strip Chart to scroll the axis to the most recent
+                data value.  Change the switch to Chart Vertically to chart data vertically
+                instead of horizontally.
+            </td>
+        </tr>
+           <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkComplexAnnotations" runat="server" NavigateUrl="~/ComplexAnnotations/Default.aspx">Complex Annotations</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton12" runat="server" ImageUrl="~/ComplexAnnotations.png" PostBackUrl="~/ComplexAnnotations/Default.aspx" />
+            </td>
+            <td>
+                This example demonstrates the circle, phase/range, point, and range annotations
+                used to highlight regions of interest in the Complex Graph. The example has
+                two range annotations, red and blue, which are used to highlight the low and high
+                regions. The circle annotation is used to highlight the circle around which the plot
+                data is drawn. The phase/range annotation is used to highlight the lower portion of
+                the circle. The two point annotations are used to highlight the minimum and maximum real
+                values of the plot. Use the ArrowHead drop down to change the arrow head style of
+                the annotations and CaptionAlignment to change where the caption is placed relative
+                to. Use CaptionRealOffset and CaptionImaginaryOffset to move the caption.
+                ArrowVisible, CaptionVisible, and Caption control the circle annotation caption.
+                Use Magnitude to set the magnitude of the circle annotation. Use PhaseStart, PhaseRange,
+                StartMagnitude, and Magnitude to control the shape of the phase/range annotation.
+                ShapeWidth and ShapeHeight change the size of the point annotation shapes. Use ShapeVisible
+                to change the point annotation shape visibility.</td>
+        </tr>
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkComplexCursors" runat="server" NavigateUrl="~/ComplexCursors/Default.aspx">Complex Cursors</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton13" runat="server" ImageUrl="~/ComplexCursors.png" PostBackUrl="~/ComplexCursors/Default.aspx" />
+            </td>
+            <td>
+                This example demonstrates cursors in the Complex Graph. The move previous and next buttons
+                will move the cursor to the previous or next point in the plot, respectively. The real and imaginary
+                position numeric edits will move the cursor directly to the specified position in
+                the plot. The current index numeric edit will move the cursor directly to the specified
+                index in the plot. Checking the label visible checkbox will make the cursor label
+                visible. Checking the snap to plot checkbox will make the cursor snap to the associated
+                plot.
+            </td>
+        </tr>
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="HyperLink2" Runat="server" NavigateUrl="~/ComplexWaveformPlotting/Default.aspx">Complex Waveform Plotting</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton17" runat="server" ImageUrl="~/ComplexWaveform.png" PostBackUrl="~/ComplexWaveformPlotting/Default.aspx" /></td>
+            <td>
+                This example demonstrates the plotting of a Complex Waveform on a Waveform Graph. You are able to plot real, imaginary,
+                phase, or magnitude values of Complex Waveform Vs Timing information. You can also visualize the X data (Timing) and Y data (Real, Imaginary, Phase or Magnitude) that is plotted.
+            </td>
+        </tr>
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkCursors" Runat="server" NavigateUrl="~/Cursors/Default.aspx">Cursors</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/Cursors.png" PostBackUrl="~/Cursors/Default.aspx" /></td>
+            <td>
+                This example demonstrates cursors in the 2D graph.  The move previous and next buttons will
+                move the cursor to the previous or next point in the plot, respectively.  The x and y position
+                numeric edits will move the cursor directly to the specified position in the plot.  The
+                current index numeric edit will move the cursor directly to the specified index in the
+                plot.  Checking the label visible checkbox will make the cursor label visible.  Checking
+                the snap to plot checkbox will make the cursor snap to the associated plot.
+            </td>
+        </tr>
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkCustomStyles" Runat="server" NavigateUrl="~/CustomStyles/Default.aspx">Custom Styles</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/CustomStyles.png" PostBackUrl="~/CustomStyles/Default.aspx" /></td>
+            <td>
+                This example demonstrates the extensibility features of the 2D Graph. The
+                drop down lists can be used to select whether each feature is disabled, uses 
+                a standard value, or uses a custom value. The custom line style shades the plot 
+                line from red to blue. The custom point style demonstrates value-dependent point styles
+                by overriding the PointStyle.IsValueDependent property. Checking the Large Points checkbox
+                increases the width and height of the point. The custom border draws a flat, double-edged border
+                around the 2D Graph.
+            </td>
+        </tr>
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkErrorBands" runat="server" NavigateUrl="~/ErrorBands/Default.aspx">Error Bands</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton14" runat="server" ImageUrl="~/ErrorBands.png" PostBackUrl="~/ErrorBands/Default.aspx" />
+            </td>
+            <td>
+                This example demonstrates the error bands feature of the 2D Graph. The error mode
+                drop down lists several example error data modes that can be applied to the graph.&nbsp;
+                The example data drop down determines whether the graph will display static data
+                or will plot data using AutoRefresh.</td>
+        </tr>
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkFillLineToBase" Runat="server" NavigateUrl="~/FillLineToBase/Default.aspx">Fill/Line-To-Base</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/Fill.png" PostBackUrl="~/FillLineToBase/Default.aspx" /></td>
+            <td>
+            This example demonstrates fill and line-to-base features of the graph. Use the FillColor drop down to change
+            the fill color and the FillStyle drop down to change the fill style. The FillMode drop down allows you to show
+            line, bins, and fills. LineColor is used to change the line color of the line-to-base lines, while LineStyle
+            is used to change the line style of those lines. The BaseValue drop down controls where the fill and lines are drawn.
+            The plot value of the BaseValue drop down allows the fill to draw to another plot.
+            </td>
+        </tr>
+        
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkGraphExtensibility" Runat="server" NavigateUrl="~/GraphExtensibility/Default.aspx">Graph Extensibility</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton7" runat="server" ImageUrl="~/Extensibility.png"
+                    PostBackUrl="~/GraphExtensibility/Default.aspx" /></td>
+            <td>
+            This example demonstrates the ability to extend and customize the 2D graph 
+            through pre-plot and post-plot drawing events. After some values have been 
+            generated, select a radio button to see the following three customizations: highlighting 
+            of the minimum and maximum value in the plot, highlighting the increasing and decreasing 
+            line segments of the plot, and highlighting the plot area background regions via custom 
+            pre-plot drawing. 
+            </td>
+        </tr>
+        
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkGraphInteraction" Runat="server" NavigateUrl="~/GraphInteraction/Default.aspx">Graph Interaction</asp:HyperLink><br />
+                <asp:ImageButton ID="ImageButton8" runat="server" ImageUrl="~/Interaction.png" PostBackUrl="~/GraphInteraction/Default.aspx" />
+            </td>
+            <td>
+                This example demonstrates the interactive functionality of the 2D graph, including
+                zooming around a point, zooming along the x axis, zooming along the y axis, zooming
+                around a selected area of the graph, and interactively editing the range of the
+                x and y axes.
+            </td>
+        </tr>
+
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkSpecialValues" Runat="server" NavigateUrl="~/SpecialValues/Default.aspx">Special Values</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton9" runat="server" ImageUrl="~/Special.png" PostBackUrl="~/SpecialValues/Default.aspx" /></td>
+            <td>
+                This example demonstrates plots handling data that contains NaN and +/- infinity values.
+                This example also demonstrates legend extensibility by showing real-time plot previews
+                in the legend items.
+            </td>
+        </tr>
+        
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkUpdatePanelTimer" Runat="server" NavigateUrl="~/UpdatePanelTimer/Default.aspx">Update Panel and Timer</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton15" runat="server" ImageUrl="~/UpdatePanelTimer/UpdatePanelTimer.png" PostBackUrl="~/UpdatePanelTimer/Default.aspx" /></td>
+            <td>
+                This example demonstrates a remote monitoring application that updates
+                parts of the user interface on a timed interval using UpdatePanel and Timer Controls
+                provided in .NET Framework 3.5. This example is same as the AutoRefresh example except
+                that it uses the UpdatePanel and Timer Controls instead of AutoRefresh.
+                Set the switch to On to start charting new values.  The slide will display the
+                most recent values. The minimum, average, and maximum meters will display the 
+                minimum, average, and maximum values respectively for all of the data that is 
+                currently plotted in the graph.
+            </td>
+        </tr>
+        
+        <tr valign="top">
+            <td style="width:125px;">
+                <asp:HyperLink ID="lnkXYGraph" Runat="server" NavigateUrl="~/XYGraph/Default.aspx">XY Graph</asp:HyperLink>
+                <br />
+                <asp:ImageButton ID="ImageButton10" runat="server" ImageUrl="~/XY.png" PostBackUrl="~/XYGraph/Default.aspx" /></td>
+            <td>
+                This example demonstrates the use of the ScatterGraph, which plots x
+                and y data values allowing you to plot non-monotonically increasing
+                data.  In this example, you are able to plot circular, octagonal,
+                polar, or spiral shapes.  You can also visualize the x data and y data
+                on their respective plots.
+            </td>
+        </tr>
+    </table>
+</asp:Content>

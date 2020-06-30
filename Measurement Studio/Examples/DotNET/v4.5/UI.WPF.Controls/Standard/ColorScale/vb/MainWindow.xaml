@@ -1,0 +1,107 @@
+﻿<Window x:Class="MainWindow"        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Using Color Scale In Intensity Graph" Height="600" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="190"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Color Marker Settings" Margin="12,12,0,12" Padding="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <RadioButton x:Name="grayScaleColorsRadioButton" Content="Gray Scale" Checked="OnRadioButtonChecked" Margin="5"/>
+                <RadioButton x:Name="redToneColorsRadioButton" Content="Red Tone" Checked="OnRadioButtonChecked" Margin="5" Grid.Row="1"/>
+                <RadioButton x:Name="highLowColorsRadioButton" Content="High Low" Checked="OnRadioButtonChecked" Margin="5" Grid.Row="2"/>
+                <RadioButton x:Name="highNormalLowColorsRadioButton" Content="High Normal Low" Checked="OnRadioButtonChecked" Margin="5" Grid.Row="3"/>
+                <RadioButton x:Name="rainbowColorsRadioButton" Content="Rainbow" Checked="OnRadioButtonChecked" Margin="5" Grid.Row="4"/>
+                <RadioButton x:Name="customColorsRadioButton" Content="Custom" Checked="OnRadioButtonChecked" Margin="5" Grid.Row="5"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Add Color Marker" Grid.Row="1" Margin="12,0,0,12" Padding="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Specify Value :" Margin="2"/>
+                <ni:NumericTextBoxInt32 x:Name="AddColorMarkerNumericTextBox" Grid.Column="1" Margin="2"/>
+                <TextBlock Text="Specify Color :" Grid.Row="1" Margin="2"/>
+                <ComboBox x:Name="AddColorMarkerColorPicker" Grid.Row="1" Grid.Column="1" Margin="2"/>
+                <Button Content="Add" Grid.Row="2" Grid.Column="1" Margin="2" Click="OnAddColorMarkerButtonClicked"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Custom Color Scale Properties" Grid.Row="2" Margin="12,0,0,12" Padding="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <CheckBox Content="Interpolate Colors on Color Scale" Grid.ColumnSpan="2" IsChecked="{Binding ElementName=colorScale, Path=IsInterpolated}"/>
+                <TextBlock Grid.Row="1">Low Color :</TextBlock>
+                <ComboBox x:Name="LowColorChooser" Grid.Row="1" Grid.Column="1" Margin="2" SelectionChanged="OnLowColorChooserSelectionChanged" />
+                <TextBlock Grid.Row="2">High Color :</TextBlock>
+                <ComboBox x:Name="HighColorChooser" Grid.Row="2" Grid.Column="1" Margin="2" SelectionChanged="OnHighColorChooserSelectionChanged"/>
+                <TextBlock Grid.Row="3">Scale Kind :</TextBlock>
+                <ComboBox x:Name="ScaleKindChooser" Grid.Row="3" Grid.Column="1" Margin="2" SelectedIndex="0">
+                    <ComboBox.Items>
+                        <sys:String>Linear</sys:String>
+                        <sys:String>LogarithmBase10</sys:String>
+                        <sys:String>LogarithmBase2</sys:String>
+                        <sys:String>LogarithmBaseE</sys:String>
+                    </ComboBox.Items>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+        <Border Grid.Column="1" Margin="12,22,12,12" BorderBrush="#FFD5DFE5" BorderThickness="1" Grid.RowSpan="4">
+            <DockPanel>
+                <Border DockPanel.Dock="Top" Height="30" Background="#FFD5DFE5" Margin="12">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">Intensity Graph</TextBlock>
+                </Border>
+                <ni:IntensityGraph x:Name="intensityGraph" Margin="12">
+                    <ni:IntensityGraph.ColorScale>
+                        <ni:ColorScale x:Name="colorScale" BaselineStrokeThickness="0" LabelOrientation="Offset: 180" Label="Color Scale" 
+                                       ScaleKind="{Binding ElementName=ScaleKindChooser, Path=SelectedItem}">
+                        </ni:ColorScale>
+                    </ni:IntensityGraph.ColorScale>
+                    <ni:IntensityGraph.VerticalAxis>
+                        <ni:AxisDouble Label="Intensity Y Axis" />
+                    </ni:IntensityGraph.VerticalAxis>
+                    <ni:IntensityGraph.HorizontalAxis>
+                        <ni:AxisDouble Orientation="Horizontal" Label="Intensity X Axis" IsInverted="False" />
+                    </ni:IntensityGraph.HorizontalAxis>
+                </ni:IntensityGraph>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

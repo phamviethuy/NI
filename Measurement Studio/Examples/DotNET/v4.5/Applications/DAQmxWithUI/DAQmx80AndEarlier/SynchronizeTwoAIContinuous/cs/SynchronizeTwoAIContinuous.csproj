@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <PropertyGroup>
+        <ProjectType>Local</ProjectType>
+        <ProductVersion>11.0.50522.1 RCREL</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{7D75D965-3DF4-4EDA-B946-7EAD5B16133C}</ProjectGuid>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ApplicationIcon>App.ico</ApplicationIcon>
+        <AssemblyKeyContainerName>
+        </AssemblyKeyContainerName>
+        <AssemblyName>SynchronizeTwoAIContinuous</AssemblyName>
+        <AssemblyOriginatorKeyFile>
+        </AssemblyOriginatorKeyFile>
+        <DefaultClientScript>JScript</DefaultClientScript>
+        <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+        <DefaultTargetSchema>IE50</DefaultTargetSchema>
+        <DelaySign>false</DelaySign>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>NationalInstruments.Examples.SynchronizeTwoAIContinuous</RootNamespace>
+        <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+        <StartupObject>
+        </StartupObject>
+        <FileUpgradeFlags>
+        </FileUpgradeFlags>
+        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <OutputPath>bin\Debug\</OutputPath>
+        <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+        <BaseAddress>285212672</BaseAddress>
+        <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+        <ConfigurationOverrideFile>
+        </ConfigurationOverrideFile>
+        <DefineConstants>TRACE;DEBUG;NETFX2_0;NETFX3_5;NETFX4_0;NETFX4_5</DefineConstants>
+        <DocumentationFile>
+        </DocumentationFile>
+        <DebugSymbols>true</DebugSymbols>
+        <FileAlignment>4096</FileAlignment>
+        <NoStdLib>false</NoStdLib>
+        <NoWarn>
+        </NoWarn>
+        <Optimize>false</Optimize>
+        <RegisterForComInterop>false</RegisterForComInterop>
+        <RemoveIntegerChecks>false</RemoveIntegerChecks>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningLevel>4</WarningLevel>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <OutputPath>bin\Release\</OutputPath>
+        <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+        <BaseAddress>285212672</BaseAddress>
+        <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+        <ConfigurationOverrideFile>
+        </ConfigurationOverrideFile>
+        <DefineConstants>TRACE;NETFX2_0;NETFX3_5;NETFX4_0;NETFX4_5</DefineConstants>
+        <DocumentationFile>
+        </DocumentationFile>
+        <DebugSymbols>false</DebugSymbols>
+        <FileAlignment>4096</FileAlignment>
+        <NoStdLib>false</NoStdLib>
+        <NoWarn>
+        </NoWarn>
+        <Optimize>true</Optimize>
+        <RegisterForComInterop>false</RegisterForComInterop>
+        <RemoveIntegerChecks>false</RemoveIntegerChecks>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningLevel>4</WarningLevel>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="NationalInstruments.Analysis.Enterprise, Version=19.0.45.49152, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.Common, Version=19.0.40.49152, Culture=neutral, PublicKeyToken=dc6ad606294fc298" />
+        <Reference Include="NationalInstruments.DAQmx" />
+        <Reference Include="NationalInstruments.UI, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="System">
+            <Name>System</Name>
+        </Reference>
+        <Reference Include="System.Data">
+            <Name>System.Data</Name>
+        </Reference>
+        <Reference Include="System.Drawing">
+            <Name>System.Drawing</Name>
+        </Reference>
+        <Reference Include="System.Windows.Forms">
+            <Name>System.Windows.Forms</Name>
+        </Reference>
+        <Reference Include="System.Xml">
+            <Name>System.XML</Name>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AssemblyInfo.cs">
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="MainForm.cs">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="SyncTask.cs">
+            <SubType>Code</SubType>
+        </Compile>
+        <EmbeddedResource Include="licenses.licx" />
+        <EmbeddedResource Include="MainForm.resx">
+            <DependentUpon>MainForm.cs</DependentUpon>
+        </EmbeddedResource>
+        <Content Include="App.ico" />
+        <Content Include="ReadMe.txt" />
+        <AppDesigner Include="Properties\" />
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+    <PropertyGroup>
+        <PreBuildEvent>
+        </PreBuildEvent>
+        <PostBuildEvent>
+        </PostBuildEvent>
+    </PropertyGroup>
+</Project>

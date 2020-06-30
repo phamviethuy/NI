@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProductVersion>11.0.50522.1 RCREL</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{261A9F67-7F8F-435B-9310-FD5B30673E00}</ProjectGuid>
+        <OutputType>WinExe</OutputType>
+        <StartupObject>NationalInstruments.Examples.Reader.MainForm</StartupObject>
+        <RootNamespace>NationalInstruments.Examples.Reader</RootNamespace>
+        <AssemblyName>Reader</AssemblyName>
+        <MyType>WindowsForms</MyType>
+        <ApplicationIcon>App.ico</ApplicationIcon>
+        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <DefineDebug>true</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DocumentationFile>Reader._2005.xml</DocumentationFile>
+        <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+        <DefineConstants>NETFX2_0,NETFX3_5,NETFX4_0,NETFX4_5</DefineConstants>
+		<Prefer32Bit>false</Prefer32Bit>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+        <DefineDebug>false</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DocumentationFile>Reader._2005.xml</DocumentationFile>
+        <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+        <DefineConstants>NETFX2_0,NETFX3_5,NETFX4_0,NETFX4_5</DefineConstants>
+		<Prefer32Bit>false</Prefer32Bit>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="NationalInstruments.Common, Version=19.0.40.49152, Culture=neutral, PublicKeyToken=dc6ad606294fc298" />
+        <Reference Include="NationalInstruments.Tdms, Version=19.0.45.49153, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.UI, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="System" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Deployment" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Import Include="Microsoft.VisualBasic" />
+        <Import Include="System" />
+        <Import Include="System.Collections" />
+        <Import Include="System.Collections.Generic" />
+        <Import Include="System.Data" />
+        <Import Include="System.Drawing" />
+        <Import Include="System.Diagnostics" />
+        <Import Include="System.Windows.Forms" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AssemblyInfo.vb" />
+        <Compile Include="MainForm.vb">
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="MainForm.Designer.vb">
+            <DependentUpon>MainForm.vb</DependentUpon>
+            <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="TdmsReaderUserControl.Designer.vb">
+            <DependentUpon>TdmsReaderUserControl.vb</DependentUpon>
+        </Compile>
+        <Compile Include="TdmsReaderUserControl.vb">
+            <SubType>UserControl</SubType>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="App.ico" />
+        <Content Include="ReadMe.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="licenses.licx" />
+        <EmbeddedResource Include="MainForm.resx">
+            <SubType>Designer</SubType>
+            <DependentUpon>MainForm.vb</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="TdmsReaderUserControl.resx">
+            <SubType>Designer</SubType>
+            <DependentUpon>TdmsReaderUserControl.vb</DependentUpon>
+        </EmbeddedResource>
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

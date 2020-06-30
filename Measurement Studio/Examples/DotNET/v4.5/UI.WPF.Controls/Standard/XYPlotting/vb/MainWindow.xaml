@@ -1,0 +1,38 @@
+﻿<Window x:Class="MainWindow"        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        Title="XY Plotting Example" Height="600" Width="550" MinHeight="450" MinWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Background="LightBlue" Content="XY Point Plot" Height="20" HorizontalContentAlignment="Center" Margin="10,5,10,0" Padding="0" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.ColumnSpan="4" />
+        <ni:Graph Margin="10,30,10,5" Name="xyGraph" Grid.ColumnSpan="4" />
+        <Label Background="LightBlue" Content="X data for the plot above" Height="20" HorizontalContentAlignment="Center" Margin="10,5,10,0" Padding="0" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" />
+        <ni:Graph Margin="10,30,10,5" Name="xGraph" Grid.Row="1" Grid.ColumnSpan="2" />
+        <Label Background="LightBlue" Content="Y data for the plot above" Height="20" HorizontalContentAlignment="Center" Margin="10,5,10,0" Padding="0" VerticalAlignment="Top" VerticalContentAlignment="Center" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" />
+        <ni:Graph Margin="10,30,10,5" Name="yGraph" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" />
+        <ni:BooleanButton Height="25" Margin="10,5,10,5" Name="circleButton" Content="Plot Circle" Click="OnPlotCircleButtonClick" Grid.Row="2" />
+        <ni:BooleanButton Height="25" Margin="10,5,10,5" Name="octagonButton" Content="Plot Octagon" Click="OnPlotOctagonButtonClick" Grid.Row="2" Grid.Column="1" />
+        <ni:BooleanButton Height="25" Margin="10,5,10,5" Name="polarButton" Content="Plot Polar" Click="OnPlotPolarButtonClick" Grid.Column="2" Grid.Row="2" />
+        <ni:BooleanButton Height="25" Margin="10,5,10,5" Name="spiralButton" Content="Plot Spiral" Click="OnPlotSpiralButtonClick" Grid.Column="3" Grid.Row="2" />
+        <TextBlock Grid.ColumnSpan="4" Grid.Row="3" Margin="5,5,5,5" TextWrapping="Wrap">
+            <TextBlock.Text>
+                This example demonstrates how to plot XY data onto a graph. The four buttons above can be used to plot
+                different shapes into the graph. Each shape consists of a series of points. The X values of the points
+                are plotted on the lower left graph. The Y values of the points are plotted on the lower right graph.
+            </TextBlock.Text>
+        </TextBlock>
+    </Grid>
+</Window>
+

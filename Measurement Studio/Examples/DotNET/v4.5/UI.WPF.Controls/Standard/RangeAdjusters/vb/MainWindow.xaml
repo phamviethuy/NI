@@ -1,0 +1,145 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Range Adjusters Example"
+        Width="525"
+        Height="625"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        xmlns:niPrimitives="http://schemas.ni.com/controls/2009/xaml/presentation/primitives">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"
+                           MinHeight="150" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid.Resources>
+            <niPrimitives:MatchedValueConverter x:Key="NoneAdjusterToEnabled"
+                                                DefaultResult="False">
+                <niPrimitives:MatchPair Value="None"
+                                        Result="True" />
+            </niPrimitives:MatchedValueConverter>
+            
+            <Style TargetType="GroupBox">
+                <Setter Property="Margin"
+                        Value="5" />
+                <Setter Property="Padding"
+                        Value="5" />
+            </Style>
+            
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin"
+                        Value="5,0" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+            </Style>
+            
+            <Style TargetType="Label">
+                <Setter Property="Margin"
+                        Value="5,0,0,0" />
+            </Style>
+
+            <Style TargetType="ni:NumericTextBoxDouble">
+                <Setter Property="Width"
+                        Value="50" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+            </Style>
+        </Grid.Resources>
+
+        <ni:Graph x:Name="graph" />
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Padding"
+                            Value="25,5" />
+                    <Setter Property="HorizontalAlignment"
+                            Value="Center" />
+                </Style>
+            </Grid.Resources>
+
+            <Button Grid.Column="0"
+                    Content="_Plot Data"
+                    Click="OnPlotDataClicked" />
+
+            <Button Grid.Column="1"
+                    Content="_Chart Data"
+                    Click="OnChartDataClicked" />
+
+            <Button Grid.Column="2"
+                    Content="C_lear Data"
+                    Click="OnClearDataClicked" />
+        </Grid>
+
+        <GroupBox Grid.Row="2"
+                  Header="_Horizontal Axis">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ComboBox x:Name="horizontalAdjuster" />
+
+                <StackPanel Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Label Content="Minimum:" />
+                    <ni:NumericTextBoxDouble x:Name="horizontalMinimum"
+                                             IsEnabled="{Binding ElementName=horizontalAdjuster, Path=SelectedItem, Converter={StaticResource NoneAdjusterToEnabled}}" />
+
+                    <Label Content="Maximum:" />
+                    <ni:NumericTextBoxDouble x:Name="horizontalMaximum"
+                                             IsEnabled="{Binding ElementName=horizontalAdjuster, Path=SelectedItem, Converter={StaticResource NoneAdjusterToEnabled}}" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="3"
+                  Header="_Vertical Axis">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ComboBox x:Name="verticalAdjuster" />
+
+                <StackPanel Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Label Content="Minimum:" />
+                    <ni:NumericTextBoxDouble x:Name="verticalMinimum"
+                                             IsEnabled="{Binding ElementName=verticalAdjuster, Path=SelectedItem, Converter={StaticResource NoneAdjusterToEnabled}}" />
+
+                    <Label Content="Maximum:" />
+                    <ni:NumericTextBoxDouble x:Name="verticalMaximum"
+                                             IsEnabled="{Binding ElementName=verticalAdjuster, Path=SelectedItem, Converter={StaticResource NoneAdjusterToEnabled}}" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        
+        <Expander Grid.Row="4"
+                  Margin="0,5,0,0"
+                  Header="About the &quot;Range Adjusters&quot; Example"
+                  IsExpanded="True">
+            <TextBlock xml:space="preserve"
+                       Padding="4"
+                       TextWrapping="Wrap">This example demonstrates the different adjuster modes available for scales in the Graph.
+
+The <Italic>Plot Data</Italic> button plots data to the graph. The <Italic>Chart Data</Italic> button charts data to the graph. The <Italic>Clear Data</Italic> button clears the data in the graph.
+
+The combo box selects among the available <Bold>RangeAdjuster</Bold>s for the <Italic>Horizontal Axis</Italic> and the <Italic>Vertical Axis</Italic>. The <Italic>Minimum</Italic> and <Italic>Maximum</Italic> numeric controls show the current axis <Bold>Range</Bold>, and allow editing the <Bold>Range</Bold> when the <Bold>None</Bold> adjuster is selected.</TextBlock>
+        </Expander>
+    </Grid>
+</Window>

@@ -1,0 +1,176 @@
+﻿<Window x:Class="NationalInstruments.Examples.Formats.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        xmlns:niPrimitives="http://schemas.ni.com/controls/2009/xaml/presentation/primitives"
+        Title="Formats Example"
+        Height="500"
+        Width="600"
+        MinHeight="350"
+        MinWidth="450">
+    <Window.Resources>
+        <Style TargetType="ni:SliderDouble" x:Key="NewSliderStyle">
+            <Setter Property="PointerTemplate">
+                <Setter.Value>
+                    <DataTemplate DataType="niPrimitives:PointerViewModel">
+                        <Grid MinWidth="11">
+                            <Rectangle Fill="Gray"
+                                       RadiusX="2"
+                                       RadiusY="2"
+                                       Stroke="{Binding BorderBrush}"
+                                       StrokeThickness="1" />
+                            <Rectangle Margin="2" Fill="DarkRed" />
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="125" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Power Limit"
+               Margin="10,10,10,0"
+               VerticalAlignment="Top"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="3" />
+        <ni:SliderDouble x:Name="powerLimitSlider"
+                         Fill="Red"
+                         FillMode="{Binding ElementName=powerGauge, Path=Value}"
+                         Margin="10,35,10,5"
+                         Range="1,400"
+                         Style="{StaticResource NewSliderStyle}"
+                         ValueChanging="powerLimitSlider_ValueChanging"
+                         Value="400"
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="3">
+            <ni:SliderDouble.Scale>
+                <ni:NumericScale ScaleKind="LogarithmBase10"
+                                 BaselineStrokeThickness="0">
+                    <ni:NumericScale.MajorDivisions>
+                        <ni:RangeLabeledDivisions LabelPresenter="0.00 W" />
+                    </ni:NumericScale.MajorDivisions>
+                </ni:NumericScale>
+            </ni:SliderDouble.Scale>
+        </ni:SliderDouble>
+
+        <ni:GaugeDouble x:Name="powerGauge"
+                        Margin="10,10,10,30"
+                        Range="0,400"
+                        Grid.Row="1"
+                        Grid.Column="2">
+            <ni:GaugeDouble.Scale>
+                <ni:NumericScale BaselineStrokeThickness="0">
+                    <ni:NumericScale.MajorDivisions>
+                        <ni:RangeLabeledDivisions LabelPresenter="0 W"
+                                                  Mode="Count:11" />
+                    </ni:NumericScale.MajorDivisions>
+                    <ni:NumericScale.CustomDivisions>
+                        <ni:CustomDivision Value="{Binding ElementName=powerLimitSlider, Path=Value}"
+                                           TickBrush="Red"
+                                           TickSize="3,10"
+                                           LabelVisibility="Collapsed" />
+                    </ni:NumericScale.CustomDivisions>
+                </ni:NumericScale>
+            </ni:GaugeDouble.Scale>
+        </ni:GaugeDouble>
+        <Label Content="Power"
+               Margin="10,0,10,5"
+               VerticalAlignment="Bottom"
+               Grid.Row="1"
+               Grid.Column="2" />
+
+        <ni:SliderDouble x:Name="voltageSlider"
+                         Margin="10,10,10,30"
+                         Orientation="Vertical"
+                         Range="0,20"
+                         ValueChanging="voltageSlider_ValueChanging"
+                         ValueChanged="voltageSlider_ValueChanged"
+                         Grid.Row="1"
+                         Grid.Column="0">
+            <ni:SliderDouble.Scale>
+                <ni:NumericScale BaselineStrokeThickness="0">
+                    <ni:NumericScale.MajorDivisions>
+                        <ni:RangeLabeledDivisions LabelPresenter="0.# V" />
+                    </ni:NumericScale.MajorDivisions>
+                    <ni:NumericScale.MinorDivisions>
+                        <ni:RangeDivisions TickSize="1, 4" />
+                    </ni:NumericScale.MinorDivisions>
+                </ni:NumericScale>
+            </ni:SliderDouble.Scale>
+        </ni:SliderDouble>
+        <Label Content="Voltage"
+               Margin="10,0,10,5"
+               VerticalAlignment="Bottom"
+               Grid.Row="1"
+               Grid.Column="0" />
+
+        <ni:SliderDouble x:Name="resistanceSlider"
+                         Fill="Green"
+                         IsInverted="True"
+                         Margin="10,10,10,30"
+                         Orientation="Vertical"
+                         Value="10"
+                         Range="1,10"
+                         ValueChanging="resistanceSlider_ValueChanging"
+                         ValueChanged="resistanceSlider_ValueChanged"
+                         ScaleLocation="Far"
+                         Grid.Row="1"
+                         Grid.Column="1">
+            <ni:SliderDouble.Scale>
+                <ni:NumericScale BaselineStrokeThickness="0"
+                                 ScaleKind="LogarithmBase10">
+                    <ni:NumericScale.MajorDivisions>
+                        <ni:RangeLabeledDivisions LabelPresenter="General:{0:F1} &#x2126;" />
+                    </ni:NumericScale.MajorDivisions>
+                    <ni:NumericScale.MinorDivisions>
+                        <ni:RangeDivisions TickSize="1, 4" />
+                    </ni:NumericScale.MinorDivisions>
+                </ni:NumericScale>
+            </ni:SliderDouble.Scale>
+        </ni:SliderDouble>
+        <Label Content="Resistance"
+               Margin="10,0,10,5"
+               VerticalAlignment="Bottom"
+               Grid.Row="1"
+               Grid.Column="1" />
+
+        <Expander Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Margin="10"
+                  Header="About the Formats Example"
+                  TabIndex="7">
+            <Grid>
+                <TextBlock TextWrapping="Wrap">
+                    <LineBreak />
+                    This example demonstrates different formatting options for the numeric pointer controls such as different scale formats, custom numeric pointers, fill modes for linear numeric pointers, inverted scales, and custom divisions.
+                    <LineBreak /><LineBreak />
+                    The "Voltage" and "Resistance" controls can increase or decrease, which changes the "Power" according to the formula: <Italic>Power = Voltage<Run BaselineAlignment="TextTop" FontSize="8" Text=" 2" /> / Resistance</Italic>
+                    <LineBreak /><LineBreak />
+                    You can use the "Power Limit" control to set the maximum power that can be generated.
+                </TextBlock>
+            </Grid>
+        </Expander>
+    </Grid>
+</Window>

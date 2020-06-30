@@ -1,0 +1,82 @@
+﻿<Window x:Class="NationalInstruments.Examples.WritableGraph.MainWindow"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation" 
+        xmlns:niPrimitives="http://schemas.ni.com/controls/2009/xaml/presentation/primitives"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WritableGraph Example" Height="600" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ni:WritableGraph Grid.Row="0" Grid.Column="0" x:Name="graph" DefaultInteraction="Pan">
+            <ni:WritableGraph.Axes>
+                <ni:AxisDouble x:Name="horizontalAxis" Orientation="Horizontal" Range="0,100" Adjuster="None" niPrimitives:InputData.DataInterval="1" />
+                <ni:AxisDouble Orientation="Vertical" Range="0,100" Adjuster="None" />
+            </ni:WritableGraph.Axes>
+            <ni:WritableGraph.Plots>
+                <ni:Plot>
+                    <ni:Plot.Renderer>
+                        <ni:LinePlotRenderer Stroke="Green" />
+                    </ni:Plot.Renderer>
+                </ni:Plot>
+            </ni:WritableGraph.Plots>
+        </ni:WritableGraph>
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,20">
+            <GroupBox Header="Graph Interaction Controls" VerticalAlignment="Top">
+                <GroupBox.Resources>
+                    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="GroupName" Value="InteractionMode" />
+                    </Style>
+                </GroupBox.Resources>
+                <StackPanel>
+                    <RadioButton Style="{StaticResource RadioButtonStyle}" Content="Pan" IsChecked="True" Checked="OnPanRadioButtonChecked" TabIndex="0" />
+                    <RadioButton Style="{StaticResource RadioButtonStyle}" Content="Zoom In On Click" Checked="OnZoomInRadioButtonChecked" TabIndex="1" />
+                    <RadioButton Style="{StaticResource RadioButtonStyle}" Content="Zoom Out On Click" Checked="OnZoomOutRadioButtonChecked" TabIndex="2" />
+                    <RadioButton Style="{StaticResource RadioButtonStyle}" Content="Draw Plot" Checked="OnDrawPlotRadioButtonChecked" TabIndex="3" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Graph Controls">
+                <GroupBox.Resources>
+                    <Style x:Key="StyleControls" TargetType="Control">
+                        <Setter Property="Margin" Value="10,5,10,0" />
+                        <Setter Property="Height" Value="25" />
+                    </Style>
+                </GroupBox.Resources>
+                <StackPanel Orientation="Vertical">
+                    <Button Style="{StaticResource StyleControls}" Content="New Input Plot" Click="OnNewInputPlotButtonClicked" TabIndex="4" />
+                    <Button Style="{StaticResource StyleControls}" Content="Generate Data" Click="OnGenerateDataButtonClicked" TabIndex="5" />
+                    <ComboBox Style="{StaticResource StyleControls}" SelectionChanged="OnComboBoxSelectionChanged" TabIndex="6">
+                        <ComboBoxItem Name="Interval1" IsSelected="True">Input Data Interval 1</ComboBoxItem>
+                        <ComboBoxItem Name="Interval5">Input Data Interval 5</ComboBoxItem>
+                        <ComboBoxItem Name="Interval10">Input Data Interval 10</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Input Plot Count">
+                <TextBox x:Name="dataCountTextBox" Text="0" IsTabStop="False" IsReadOnly="True" />
+            </GroupBox>
+        </StackPanel>
+
+        <Expander Grid.Row="2" Grid.ColumnSpan="2" Margin="10" Header="About the WritableGraph Example" TabIndex="7">
+            <Grid>
+                <TextBlock TextWrapping="Wrap">
+                    <LineBreak />
+                    This example demonstrates the use of the WritableGraph control.
+                    <LineBreak /><LineBreak />
+                    The "Graph Interaction Controls" groupbox specifies the interaction mode. If "Draw Plot" is selected, click and drag the cursor to create an input data plot. To change the values, simply click and drag over the area to be updated.
+                    <LineBreak /><LineBreak />
+                    The "New Input Plot" button creates a new input plot to draw. Note that the closest input plot to the cursor is what gets updated if values are redrawn. 
+                    <LineBreak /><LineBreak />
+                    The "Generate Data" button will create a new set of random data. The combobox with interval values will change the interval size with which you can draw input data. "Input Plot Count" displays the number of input plots.
+                </TextBlock>
+            </Grid>
+        </Expander>
+    </Grid>
+</Window>

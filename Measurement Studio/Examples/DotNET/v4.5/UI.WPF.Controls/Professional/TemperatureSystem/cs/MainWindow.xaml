@@ -1,0 +1,218 @@
+﻿<Window x:Class="NationalInstruments.Examples.TemperatureSystem.MainWindow"        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        Title="Temperature System Example" Height="600" Width="800" MinHeight="525" MinWidth="600">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="File">
+                <MenuItem Header="Analyze"
+                          IsCheckable="True"
+                          MouseEnter="OnMenuItemMouseEnter"
+                          MouseLeave="OnMenuItemMouseLeave"
+                          Checked="OnAnalyzeMenuChecked"
+                          Unchecked="OnAnalyzeMenuUnchecked"
+                          Name="analyzeMenuItem"
+                          ToolTip="Analyze Data"/>
+                <MenuItem Header="Acquire"
+                          IsCheckable="True"
+                          MouseEnter="OnMenuItemMouseEnter"
+                          MouseLeave="OnMenuItemMouseLeave"
+                          Checked="OnAcquireMenuChecked"
+                          Unchecked="OnAcquireMenuUnchecked"
+                          Name="acquireMenuItem"
+                          ToolTip="Acquire Data"/>
+                <Separator/>
+                <MenuItem Header="Exit"
+                          Click="OnExitMenuItemClick"
+                          MouseEnter="OnMenuItemMouseEnter"
+                          MouseLeave="OnMenuItemMouseLeave"
+                          ToolTip="Closes the Application"/>
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Toolbar"
+                          IsCheckable="True"
+                          IsChecked="True"
+                          MouseEnter="OnMenuItemMouseEnter"
+                          MouseLeave="OnMenuItemMouseLeave"
+                          Name="toolbarMenuItem"
+                          ToolTip="Show or hide the Toolbar"/>
+                <MenuItem Header="Status Bar"
+                          IsCheckable="True"
+                          IsChecked="True"
+                          MouseEnter="OnMenuItemMouseEnter"
+                          MouseLeave="OnMenuItemMouseLeave"
+                          Name="statusBarMenuItem"
+                          ToolTip="Show or hide the Status Bar"/>
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Background="White" 
+                     Visibility="{Binding ElementName=toolbarMenuItem,Path=IsChecked,Mode=TwoWay,Converter={StaticResource BooleanToVisibilityConverter}}" 
+                     Grid.Row="1" 
+                     Grid.ColumnSpan="2" >
+            <ToolBar Band="1" BandIndex="1" IsOverflowOpen="False">
+                <ToggleButton Name="acquireToolbarButton" Click="OnAcquireToolbarButtonClick">
+                    <Image Source="Acquire.PNG"/>
+                </ToggleButton>
+                <ToggleButton Name="analyzeToolbarButton" Click="OnAnalyzeToolbarButtonClick">
+                    <Image Source="Analyze.PNG"/>
+                </ToggleButton>
+            </ToolBar>
+        </ToolBarTray>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Analyze" HorizontalContentAlignment="Center" Padding="0" />
+                <ni:Switch Height="80" Margin="10,5,10,5" Name="analyze" Orientation="Vertical" Width="40" ValueChanged="OnAnalyzeValueChanged" Grid.Row="1" />
+                <Label Content="Acquire" HorizontalContentAlignment="Center" Padding="0" Grid.Column="1" />
+                <ni:Switch Height="80" Margin="10,5,10,5" Name="acquire" Orientation="Vertical" Width="40" ValueChanged="OnAcquireValueChanged" Grid.Column="1" Grid.Row="1" />
+            </Grid>
+            <Label Content="Update Rate (s)" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0" VerticalAlignment="Top" Grid.Row="1" />
+            <ni:SliderDouble Height="60" Margin="10,15,10,5" Name="updateRate" ValueChanged="OnUpdateRateValueChanged" Range="0.05,1" Value="0.05" Grid.Row="1" />
+            <GroupBox Header="Temperature Range" Height="125" Margin="5,5,5,0" Grid.Row="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Low Limit" HorizontalContentAlignment="Center" Margin="5" Padding="0" VerticalAlignment="Top" />
+                    <Label Content="Upper Limit" HorizontalContentAlignment="Center" Margin="5" Padding="0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ni:KnobDouble Margin="-10,10,-10,-10" Name="lowLimitKnob" Range="70,90" Value="75" />
+                    <ni:KnobDouble Margin="-10,10,-10,-10" Name="upperLimitKnob" Range="70,90" Value="85" Grid.Column="1" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Histogram Settings" Margin="5,5,5,0" Grid.Row="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Minimum Bin" Margin="10,0,0,0" Padding="0" VerticalAlignment="Center" />
+                    <ni:NumericTextBoxDouble Height="20" Margin="5" Name="minimumBin" Value="70" ValueChanging="OnMinimumBinValueChanging" Grid.Column="1" />
+                    <Label Content="Maximum Bin" Margin="10,0,0,0" Padding="0" VerticalAlignment="Center" Grid.Row="1" />
+                    <ni:NumericTextBoxDouble Height="20" Margin="5" Name="maximumBin" Value="90" ValueChanging="OnMaximumBinValueChanging" Grid.Row="1" Grid.Column="1" />
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="65" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <ni:Graph Margin="10,10,5,5" Name="temperatureGraph" Grid.ColumnSpan="2">
+                <ni:Graph.Axes>
+                    <ni:AxisDouble x:Name="xScale" Range="0,100" Orientation="Horizontal" MinorDivisions="{x:Null}" Adjuster="ContinuousChart" InteractionMode="None"/>
+                    <ni:AxisDouble x:Name="yScale" Range="70,90" Orientation="Vertical" MinorDivisions="{x:Null}" Adjuster="None" InteractionMode="None">
+                        <ni:AxisDouble.MajorDivisions>
+                            <ni:RangeLabeledDivisions/>
+                        </ni:AxisDouble.MajorDivisions>
+                        <ni:AxisDouble.MajorGridLines>
+                            <ni:GridLines/>
+                        </ni:AxisDouble.MajorGridLines>
+                    </ni:AxisDouble>
+                </ni:Graph.Axes>
+                <ni:Graph.Children>
+                    <ni:RangeCursor x:Name="upperLimitRangeCursor"
+                                    Label="Range cursor"
+                                    CrosshairBrush="#8008"
+                                    CrosshairThickness="1"
+                                    Cursor="Hand"
+                                    SnapToData="False"
+                                    FillBrush="#88FF0000"
+                                    VerticalRange="85,91"
+                                    ValuePresenter="Group:F0"
+                                    ValueVisibility="Collapsed"
+                                    />
+                    <ni:RangeCursor x:Name="lowerLimitRangeCursor"
+                                    Label="Range cursor"
+                                    CrosshairBrush="#8008"
+                                    CrosshairThickness="1"
+                                    Cursor="Hand"
+                                    SnapToData="False"
+                                    FillBrush="#88ADD8E6"
+                                    VerticalRange="69,75"
+                                    ValuePresenter="Group:F0"
+                                    ValueVisibility="Collapsed"
+                                    />
+                </ni:Graph.Children>
+            </ni:Graph>
+            <ni:Graph Margin="10,5,5,5" Name="temperatureHistogram" PlotAreaBackground="White" Grid.Row="1">
+                <ni:Graph.Axes>
+                    <ni:AxisDouble Range="65,95" Orientation="Horizontal" MinorDivisions="{x:Null}" Adjuster="None" InteractionMode="None"/>
+                    <ni:AxisDouble Orientation="Vertical" MinorDivisions="{x:Null}" InteractionMode="None">
+                        <ni:AxisDouble.MajorDivisions>
+                            <ni:RangeLabeledDivisions/>
+                        </ni:AxisDouble.MajorDivisions>
+                        <ni:AxisDouble.MajorGridLines>
+                            <ni:GridLines/>
+                        </ni:AxisDouble.MajorGridLines>
+                    </ni:AxisDouble>
+                </ni:Graph.Axes>
+                <ni:Graph.Plots>
+                    <ni:Plot>
+                        <ni:Plot.Renderer>
+                            <ni:PlotRendererGroup>
+                                <ni:BarPlotRenderer Stroke="LightBlue" FillBaseline="Zero" StrokeThickness="2" BarWidth="1.0">
+                                    <ni:BarPlotRenderer.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#C85CD5FF" Offset="0" />
+                                            <GradientStop Color="#C80083A0" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </ni:BarPlotRenderer.Fill>
+                                </ni:BarPlotRenderer>
+                            </ni:PlotRendererGroup>
+                        </ni:Plot.Renderer>
+                    </ni:Plot>
+                </ni:Graph.Plots>
+            </ni:Graph>
+            <Label Content="Current Temp" FontSize="9" HorizontalAlignment="Right" Margin="0,5,5,0" Padding="0" VerticalAlignment="Top" Grid.Column="2" />
+            <ni:TankDouble Margin="5,15,10,20" Name="currentTemperature" Orientation="Vertical" Range="70,90" Grid.Column="2" />
+            <Label Content="Mean Temp" FontSize="9" HorizontalAlignment="Right" Margin="0,0,5,0" Padding="0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" />
+            <ni:TankDouble Margin="5,10,5,25" Name="meanTemperature" Orientation="Vertical" Range="70,90" Grid.Row="1" Grid.Column="1" />
+            <Label Content="Std Dev" FontSize="9" HorizontalAlignment="Right" Margin="0,0,5,0" Padding="0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" />
+            <ni:TankDouble Margin="5,10,10,25" Name="standardDeviation" Orientation="Vertical" Grid.Row="1" Grid.Column="2" />
+        </Grid>
+        <StatusBar Visibility="{Binding ElementName=statusBarMenuItem,Path=IsChecked,Mode=TwoWay,Converter={StaticResource BooleanToVisibilityConverter}}"
+                   Grid.Row="3" 
+                   Grid.ColumnSpan="2">
+            <StatusBarItem>
+                <TextBlock Name="statusBar" Text="Ready"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

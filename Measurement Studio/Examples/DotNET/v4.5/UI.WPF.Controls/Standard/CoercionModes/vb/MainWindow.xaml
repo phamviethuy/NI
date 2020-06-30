@@ -1,0 +1,102 @@
+﻿<Window x:Class="MainWindow"        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"
+        Title="CoercionModes Example" Height="450" Width="550" MinHeight="350" MinWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </Grid.Resources>
+        <ni:KnobDouble Margin="0" Name="doubleKnob" Interval="{Binding ElementName=intervalDouble, Path=Value}" Grid.RowSpan="1">
+            <ni:KnobDouble.Scale>
+                <ni:NumericScale>
+                    <ni:NumericScale.MinorDivisions>
+                        <ni:RangeDivisions TickVisibility="{Binding ElementName=minorDivisionsCheckBox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </ni:NumericScale.MinorDivisions>
+                    <ni:NumericScale.MajorDivisions>
+                        <ni:RangeLabeledDivisions TickVisibility="{Binding ElementName=majorDivisionsCheckBox, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </ni:NumericScale.MajorDivisions>
+                </ni:NumericScale>
+            </ni:KnobDouble.Scale>
+        </ni:KnobDouble>
+        <GroupBox Header="Values" Margin="5,0,5,5" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Set Value:" Height="25" Margin="5,0,5,0" Padding="0" VerticalContentAlignment="Center" />
+                <Label Content="Coerced Value:" Height="25" Margin="5,0,5,0" Padding="0" VerticalContentAlignment="Center" Grid.Row="1" />
+                <Label Content="Previous Value:" Height="25" Margin="5,0,5,0" Padding="0" VerticalContentAlignment="Center" Grid.Row="2" />
+                <Label Content="Next Value:" Height="25" Margin="5,0,5,0" Padding="0" VerticalContentAlignment="Center" Grid.Row="3" />
+                <ni:NumericTextBoxDouble Height="25" Name="setValueDouble" TextAlignment="Left" ValueFormatter="F3" Grid.Column="1" />
+                <ni:NumericTextBoxDouble Height="25" Name="coercedValueDouble" TextAlignment="Left" ValueFormatter="F3" InteractionMode="ReadOnly" Value="{Binding ElementName=doubleKnob, Path=CoercedValue, Mode=OneWay}" ValueChanged="CoercedValueChanged" Grid.Column="1" Grid.Row="1" />
+                <ni:NumericTextBoxDouble Height="25" Name="previousValueDouble" TextAlignment="Left" ValueFormatter="F3" InteractionMode="ReadOnly" Grid.Column="1" Grid.Row="2" />
+                <ni:NumericTextBoxDouble Height="25" Name="nextValueDouble" TextAlignment="Left" ValueFormatter="F3" InteractionMode="ReadOnly" Grid.Column="1" Grid.Row="3" />
+                <ni:BooleanButton Height="25" Margin="5,0,5,0" Name="commitButton" Width="71" Content="Commit" Click="OnCommitButtonClick" Grid.Column="2" />
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <GroupBox Header="Coercion Mode" Margin="5,0,5,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <RadioButton Content="None" Height="16" Margin="5,0,0,0" Name="noneCoercionModeButton" IsChecked="True" Checked="OnNoneCoercionModeButtonChecked" />
+                    <RadioButton Content="ToDivisions" Height="16" Margin="5,0,0,0" Name="toDivisionsCoercionModeButton" Checked="OnToDivisionsCoercionModeButtonChecked" Grid.Row="1" />
+                    <RadioButton Content="ToIntervalFromMinimum" Height="16" Margin="5,0,0,0" Name="toIntervalFromMinimumCoercionModeButton" Checked="OnToIntervalFromMinimumCoercionModeButtonChecked" Grid.Row="2" />
+                    <RadioButton Content="ToIntervalFromBase" Height="16" Margin="5,0,0,0" Name="toIntervalFromBaseCoercionModeButton" Checked="OnToIntervalFromBaseCoercionModeButtonChecked" Grid.Row="3" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Divisions" Margin="5,0,5,0" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <CheckBox Content="Enable Major Divisions" Height="16" Margin="5,0,0,0" Name="majorDivisionsCheckBox" IsEnabled="{Binding ElementName=toDivisionsCoercionModeButton, Path=IsChecked}" IsChecked="True" />
+                    <CheckBox Content="Enable Minor Divisions" Height="16" Margin="5,0,0,0" Name="minorDivisionsCheckBox" IsEnabled="{Binding ElementName=toDivisionsCoercionModeButton, Path=IsChecked}" IsChecked="True" Grid.Row="1" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Coercion Interval" Margin="5,0,5,5" Grid.Row="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Interval Base:" Height="22" Margin="5,0,0,0" Padding="0" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=toIntervalFromBaseCoercionModeButton, Path=IsChecked}" />
+                    <ni:NumericTextBoxDouble Height="22" Margin="10,0,10,0" Name="intervalBaseDouble" ValueFormatter="F3" TextAlignment="Left" IsEnabled="{Binding ElementName=toIntervalFromBaseCoercionModeButton, Path=IsChecked}" ValueChanged="OnIntervalBaseDoubleValueChanged" Grid.Column="1" />
+                    <Label Content="Interval:" Height="22" Margin="5,0,0,0" Padding="0" VerticalContentAlignment="Center" Grid.Row="1" />
+                    <ni:NumericTextBoxDouble Height="22" Margin="10,0,10,0" Name="intervalDouble" ValueFormatter="F3" Value="1.0" TextAlignment="Left" Grid.Row="1" Grid.Column="1" />
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,51 @@
+<%@ Master Language="VB" CodeFile="Examples.master.vb" Inherits="Examples" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Measurement Studio ASP.NET Examples</title>
+    <link runat="server" rel="stylesheet" type="text/css" href="~/Style.css"/>
+</head>
+<body>
+    <form id="masterForm" runat="server">
+    <asp:SiteMapDataSource ID="sitemapSource" Runat="server" />
+    <table cellspacing="0" cellpadding="0" width="820" border="0">
+        <tr valign="middle">
+            <td align="right" class="title" style="width:663px; text-align: left; height: 106px;">
+                <span style="font-size: 14pt; vertical-align: top;">Measurement Studio ASP.NET
+                    <br />
+                    Demonstration Gallery<br />
+                    <br />
+                </span>
+            </td>
+            <td style="width:152px; text-align: right; height: 106px;">
+                &nbsp;<br />
+                <a href="http://www.ni.com/mstudio">
+                    <asp:Image ImageUrl="~/Logo.png" Height="61px" Width="75px" ID="Image1" runat="server" />
+                    </a>
+                <asp:HyperLink ID="backtoHomeLink" runat="server" NavigateUrl="http://www.ni.com/mstudio"
+                    Width="134px">Measurement Studio Home Page</asp:HyperLink>&nbsp;
+            </td>
+        </tr>
+    </table>
+    
+    <div class="banner">
+        Measurement Studio ASP.NET
+        <asp:SiteMapPath Runat="server" ID="masterSiteMap" PathSeparator="&nbsp;&raquo;&nbsp;">
+            <NodeTemplate>
+                <asp:Label Runat="server"><%#Container.SiteMapNode.Title%></asp:Label>
+            </NodeTemplate>
+        </asp:SiteMapPath>
+    </div>
+    
+    <div class="navigationContent">
+        <asp:TreeView ID="siteNavigation" Runat="server" DataSourceID="sitemapSource"/>
+    </div>
+    
+    <div class="exampleContent">
+        <asp:ContentPlaceHolder ID="exampleContentHolder" Runat="server" />
+    </div>
+    </form>
+</body>
+</html>

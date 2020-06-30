@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <PropertyGroup>
+        <ProjectType>Local</ProjectType>
+        <ProductVersion>11.0.50522.1 RCREL</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{1E2C432F-80D9-4A66-B4F2-8826FACCDF0B}</ProjectGuid>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ApplicationIcon>App.ico</ApplicationIcon>
+        <AssemblyKeyContainerName>
+        </AssemblyKeyContainerName>
+        <AssemblyName>SpectrumAnalyzer</AssemblyName>
+        <AssemblyOriginatorKeyFile>
+        </AssemblyOriginatorKeyFile>
+        <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+        <DefaultClientScript>JScript</DefaultClientScript>
+        <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+        <DefaultTargetSchema>IE50</DefaultTargetSchema>
+        <DelaySign>false</DelaySign>
+        <OutputType>WinExe</OutputType>
+        <OptionCompare>Binary</OptionCompare>
+        <OptionExplicit>On</OptionExplicit>
+        <OptionStrict>Off</OptionStrict>
+        <RootNamespace>NationalInstruments.Examples.SpectrumAnalyzer</RootNamespace>
+        <StartupObject>NationalInstruments.Examples.SpectrumAnalyzer.MainForm</StartupObject>
+        <FileUpgradeFlags>
+        </FileUpgradeFlags>
+        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <OutputPath>bin\</OutputPath>
+        <BaseAddress>285212672</BaseAddress>
+        <ConfigurationOverrideFile>
+        </ConfigurationOverrideFile>
+        <DefineConstants>NETFX2_0,NETFX3_5,NETFX4_0,NETFX4_5</DefineConstants>
+        <DefineDebug>true</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+        <DebugSymbols>true</DebugSymbols>
+        <Optimize>false</Optimize>
+        <RegisterForComInterop>false</RegisterForComInterop>
+        <RemoveIntegerChecks>false</RemoveIntegerChecks>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningLevel>1</WarningLevel>
+        <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <OutputPath>bin\</OutputPath>
+        <BaseAddress>285212672</BaseAddress>
+        <ConfigurationOverrideFile>
+        </ConfigurationOverrideFile>
+        <DefineConstants>NETFX2_0,NETFX3_5,NETFX4_0,NETFX4_5</DefineConstants>
+        <DefineDebug>false</DefineDebug>
+        <DefineTrace>true</DefineTrace>
+        <DebugSymbols>false</DebugSymbols>
+        <Optimize>true</Optimize>
+        <RegisterForComInterop>false</RegisterForComInterop>
+        <RemoveIntegerChecks>false</RemoveIntegerChecks>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningLevel>1</WarningLevel>
+        <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="NationalInstruments.Analysis.Enterprise, Version=19.0.45.49152, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.Common, Version=19.0.40.49152, Culture=neutral, PublicKeyToken=dc6ad606294fc298" />
+        <Reference Include="NationalInstruments.DAQmx" />
+        <Reference Include="NationalInstruments.UI, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="NationalInstruments.UI.WindowsForms, Version=19.0.45.49154, Culture=neutral, PublicKeyToken=4febd62461bf11a4" />
+        <Reference Include="System">
+            <Name>System</Name>
+        </Reference>
+        <Reference Include="System.Data">
+            <Name>System.Data</Name>
+        </Reference>
+        <Reference Include="System.Drawing">
+            <Name>System.Drawing</Name>
+        </Reference>
+        <Reference Include="System.Windows.Forms">
+            <Name>System.Windows.Forms</Name>
+        </Reference>
+        <Reference Include="System.Xml">
+            <Name>System.XML</Name>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Import Include="Microsoft.VisualBasic" />
+        <Import Include="NationalInstruments" />
+        <Import Include="NationalInstruments.Analysis" />
+        <Import Include="NationalInstruments.Analysis.Conversion" />
+        <Import Include="NationalInstruments.Analysis.Dsp" />
+        <Import Include="NationalInstruments.Analysis.Dsp.Filters" />
+        <Import Include="NationalInstruments.Analysis.Math" />
+        <Import Include="NationalInstruments.Analysis.Monitoring" />
+        <Import Include="NationalInstruments.Analysis.SignalGeneration" />
+        <Import Include="NationalInstruments.Analysis.SpectralMeasurements" />
+        <Import Include="NationalInstruments.DAQmx" />
+        <Import Include="NationalInstruments.UI" />
+        <Import Include="NationalInstruments.UI.WindowsForms" />
+        <Import Include="System" />
+        <Import Include="System.Collections" />
+        <Import Include="System.Data" />
+        <Import Include="System.Diagnostics" />
+        <Import Include="System.Drawing" />
+        <Import Include="System.Windows.Forms" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AssemblyInfo.vb">
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Include="MainForm.vb">
+            <SubType>Form</SubType>
+        </Compile>
+        <EmbeddedResource Include="licenses.licx" />
+        <EmbeddedResource Include="MainForm.resx">
+            <DependentUpon>MainForm.vb</DependentUpon>
+        </EmbeddedResource>
+        <AppDesigner Include="My Project\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="App.ico" />
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
+    <PropertyGroup>
+        <PreBuildEvent>
+        </PreBuildEvent>
+        <PostBuildEvent>
+        </PostBuildEvent>
+    </PropertyGroup>
+</Project>
